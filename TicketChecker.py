@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from selenium.webdriver.support import expected_conditions as EC
-from PyQt5.QtCore import QDateTime, QThread, pyqtSignal
+from PyQt5.QtCore import QDateTime, QThread, pyqtSignal, QTimer
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
@@ -21,6 +21,9 @@ class TicketChecker(QMainWindow):
         self.setDate2departureStationDateEdit()
         self.readDependencies()
 
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.startControl)
+
         self.addChromeDriverButton.clicked.connect(self.addChromeDriver)
         self.startControlButton.clicked.connect(self.startControl)
         self.clearPlainTextEdit.clicked.connect(self.clear)
@@ -35,6 +38,8 @@ class TicketChecker(QMainWindow):
         travelTime = self.departureStationDateTimeEdit.time().toString("HH:mm")
         controlTime = self.controlTimeSpinBox.value()
 
+        self.timer.start(controlTime * 60 * 1000)
+
         self.progressBar.setRange(0, 0)
         self.progressBar.show()
         
@@ -46,11 +51,18 @@ class TicketChecker(QMainWindow):
     def checkControl(self, controlMessage):
         now = datetime.now()
         now = now.strftime("%H:%M:%S")
-        message = f"Kontrol zamanı : {now}, {controlMessage}"
+
+        if "Engelli" in controlMessage:
+            message = f"Kontrol zamanı : {now}, Uygun koltuk bulunamadı!"
+        else:
+            message = f"Kontrol zamanı : {now}, {controlMessage}"
+            QMessageBox.information(self,"Bilgi","Uygun koltuk tespit edildi!")
+            self.progressBar.setValue(100)
+
         self.logPlainTextEdit.appendPlainText(message)
 
     def onControlFinished(self):
-        QMessageBox.information(self, "Kontrol Tamamlandı", "Bilet kontrolü tamamlandı!")
+        print("Kontrol süreci başarıyla tamamlandı.")
 
     def addChromeDriver(self):
         file_path, _ = QFileDialog.getOpenFileName(self, "Exe Dosyası Seç", "", "Exe Files (*.exe)")
