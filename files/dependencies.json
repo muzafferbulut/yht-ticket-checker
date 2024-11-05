@@ -1,0 +1,11 @@
+{
+    "tcdd_link": "https://ebilet.tcddtasimacilik.gov.tr/view/eybis/tnmGenel/tcddWebContent.jsf",
+    "driver_path": "C:/Muzaffer/PythonProjects/yht-ticket-checker/files/chromedriver.exe",
+    "departure_element_id": "nereden",
+    "arrival_element_id": "nereye",
+    "departure_date_element_id": "trCalGid_input",
+    "departure_date_elemen_close_button_css_selector": "#ui-datepicker-div > div.ui-datepicker-buttonpane.ui-widget-content > button.ui-datepicker-close.ui-state-default.ui-priority-primary.ui-corner-all",
+    "search_button_id": "btnSeferSorgula",
+    "ticket_control_css_selector": ".seferRow",
+    "ticket_control_row_label_class": "ui-selectonemenu-label"
+}
