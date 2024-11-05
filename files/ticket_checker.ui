@@ -306,19 +306,6 @@
       <string>Başlat</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="clearPlainTextEdit">
-     <property name="geometry">
-      <rect>
-       <x>360</x>
-       <y>120</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Temizle</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
@@ -353,7 +340,7 @@
       <rect>
        <x>10</x>
        <y>350</y>
-       <width>431</width>
+       <width>331</width>
        <height>23</height>
       </rect>
      </property>
@@ -362,6 +349,19 @@
      </property>
      <property name="textVisible">
       <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clearPlainTextEdit">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>350</y>
+       <width>91</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Logları Temizle</string>
      </property>
     </widget>
    </widget>
