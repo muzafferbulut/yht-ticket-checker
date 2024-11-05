@@ -58,6 +58,7 @@ class TicketChecker(QMainWindow):
             message = f"Kontrol zamanı : {now}, {controlMessage}"
             QMessageBox.information(self,"Bilgi","Uygun koltuk tespit edildi!")
             self.progressBar.setValue(100)
+            self.timer.stop()
 
         self.logPlainTextEdit.appendPlainText(message)
 
