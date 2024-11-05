@@ -306,6 +306,19 @@
       <string>Başlat</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="clearPlainTextEdit">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>120</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Temizle</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
@@ -321,7 +334,7 @@
     </property>
     <widget class="QPlainTextEdit" name="logPlainTextEdit">
      <property name="enabled">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <property name="geometry">
       <rect>
@@ -330,6 +343,9 @@
        <width>431</width>
        <height>321</height>
       </rect>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QProgressBar" name="progressBar">

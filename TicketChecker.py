@@ -23,6 +23,10 @@ class TicketChecker(QMainWindow):
 
         self.addChromeDriverButton.clicked.connect(self.addChromeDriver)
         self.startControlButton.clicked.connect(self.startControl)
+        self.clearPlainTextEdit.clicked.connect(self.clear)
+
+    def clear(self):
+        self.logPlainTextEdit.clear()
 
     def startControl(self):
         departureStation = self.departureStationCombo.currentText()
@@ -30,6 +34,9 @@ class TicketChecker(QMainWindow):
         travelDate = self.departureStationDateTimeEdit.date().toString("dd.MM.yyyy")
         travelTime = self.departureStationDateTimeEdit.time().toString("HH:mm")
         controlTime = self.controlTimeSpinBox.value()
+
+        self.progressBar.setRange(0, 0)
+        self.progressBar.show()
         
         self.worker = Controller(self.dependencies, departureStation, arrivalStation, travelDate, travelTime, controlTime)
         self.worker.controlMessage.connect(self.checkControl)
@@ -86,7 +93,7 @@ class Controller(QThread):
         try:
             service = Service(self.dependencies["driver_path"])
             options = webdriver.ChromeOptions()
-            # options.add_argument("--headless")
+            options.add_argument("--headless")
             driver = webdriver.Chrome(service=service, options=options)
 
             driver.get(self.dependencies["tcdd_link"])
@@ -126,7 +133,7 @@ class Controller(QThread):
 
             searchButton = driver.find_element(By.ID, self.dependencies["search_button_id"])
             searchButton.click()
-            time.sleep(10)
+            time.sleep(5)
 
             rows = driver.find_elements(By.CSS_SELECTOR, self.dependencies["ticket_control_css_selector"])
             data = []
