@@ -96,12 +96,12 @@
         </item>
         <item>
          <property name="text">
-          <string>Eryaman</string>
+          <string>ERYAMAN YHT</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Polatlı</string>
+          <string>Polatlı YHT</string>
          </property>
         </item>
         <item>
@@ -111,12 +111,12 @@
         </item>
         <item>
          <property name="text">
-          <string>Bozüyük</string>
+          <string>Bozüyük YHT</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Bilecik</string>
+          <string>Bilecik YHT</string>
          </property>
         </item>
         <item>
@@ -126,7 +126,7 @@
         </item>
         <item>
          <property name="text">
-          <string>İzmit</string>
+          <string>İzmit YHT</string>
          </property>
         </item>
         <item>
@@ -136,27 +136,27 @@
         </item>
         <item>
          <property name="text">
-          <string>Pendik</string>
+          <string>İstanbul(Pendik)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Bostancı</string>
+          <string>İstanbul(Bostancı)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Söğütlüçeşme</string>
+          <string>İstanbul(Söğütlüçeşme)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Bakırköy</string>
+          <string>İstanbul(Bakırköy)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Halkalı</string>
+          <string>İstanbul(Halkalı)</string>
          </property>
         </item>
        </widget>
@@ -166,80 +166,6 @@
         <property name="text">
          <string>Varış İstasyonu :</string>
         </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QComboBox" name="arrivalStationCombo">
-        <item>
-         <property name="text">
-          <string>Halkalı</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Bakırköy</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Söğütlüçeşme</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Bostancı</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Pendik</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Gebze</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>İzmit</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Arifiye</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Bilecik</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Bozüyük</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Eskişehir</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Polatlı</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Eryaman</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Ankara Gar</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="3" column="0">
@@ -261,6 +187,9 @@
         <property name="prefix">
          <string/>
         </property>
+        <property name="minimum">
+         <number>5</number>
+        </property>
         <property name="maximum">
          <number>60</number>
         </property>
@@ -271,6 +200,80 @@
       </item>
       <item row="3" column="1">
        <widget class="QDateTimeEdit" name="departureStationDateTimeEdit"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="arrivalStationCombo">
+        <item>
+         <property name="text">
+          <string>İstanbul(Halkalı)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>İstanbul(Bakırköy)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>İstanbul(Söğütlüçeşme)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>İstanbul(Bostancı)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>İstanbul(Pendik)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Gebze</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>İzmit YHT</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Arifiye</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Bozüyük YHT</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Eskişehir</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Polatlı YHT</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ERYAMAN YHT</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Bilecik YHT</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ankara Gar</string>
+         </property>
+        </item>
+       </widget>
       </item>
      </layout>
     </widget>
