@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>YHT Ticket Control</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>yht.png</normaloff>yht.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
