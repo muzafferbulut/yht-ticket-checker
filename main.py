@@ -5,6 +5,7 @@ from PyQt5.uic import loadUi
 from Controller import Controller
 import json
 import sys
+import os
 
 class TicketChecker(QMainWindow):
 
@@ -94,8 +95,10 @@ class TicketChecker(QMainWindow):
         with open("files/dependencies.json", "r") as file:
             self.dependencies = json.load(file)
         self.chromeDriverLineEdit.setText(self.dependencies["driver_path"])
-        if self.dependencies["driver_path"] != "":
+        if os.path.exists(self.dependencies["driver_path"]):
             self.startControlButton.setEnabled(True)
+        else:
+            self.chromeDriverLineEdit.clear()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

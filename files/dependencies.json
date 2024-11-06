@@ -1,6 +1,6 @@
 {
     "tcdd_link": "https://ebilet.tcddtasimacilik.gov.tr/view/eybis/tnmGenel/tcddWebContent.jsf",
-    "driver_path": "C:/Muzaffer/PythonProjects/yht-ticket-checker/files/chromedriver.exe",
+    "driver_path": "C:/Muzaffer/Projects/yht-ticket-checker/files/chromedriver.exe",
     "departure_element_id": "nereden",
     "arrival_element_id": "nereye",
     "departure_date_element_id": "trCalGid_input",
