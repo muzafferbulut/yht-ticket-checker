@@ -10,8 +10,8 @@ from datetime import datetime
 from PyQt5.uic import loadUi
 import pandas as pd
 import time
-import sys
 import json
+import sys
 
 class TicketChecker(QMainWindow):
 
@@ -30,7 +30,11 @@ class TicketChecker(QMainWindow):
         self.stopControlButton.clicked.connect(self.stop)
 
     def stop(self):
-        pass
+        self.progressBar.setRange(0, 100)
+        self.progressBar.setValue(0)
+        self.timer.stop()
+        self.worker.terminate()
+        self.logPlainTextEdit.appendPlainText("Kontrol işlemi durduruldu.")
 
     def clear(self):
         self.logPlainTextEdit.clear()
@@ -54,20 +58,24 @@ class TicketChecker(QMainWindow):
 
     def checkControl(self, controlMessage):
         now = datetime.now()
-        now = now.strftime("%H:%M:%S")
+        self.now = now.strftime("%H:%M:%S")
+        log = f"Kontrol zamanı : {self.now}, "
 
-        if "Engelli" in controlMessage:
-            if controlMessage.startswith("Hata"):
-                message = f"Kontrol zamanı : {now}, {controlMessage}"
-            else:
-                message = f"Kontrol zamanı : {now}, Uygun koltuk bulunamadı!"
+        if controlMessage.startswith("Hata") or controlMessage.startswith("Kontrol"):
+            log += controlMessage
         else:
-            message = f"Kontrol zamanı : {now}, {controlMessage}"
-            QMessageBox.information(self,"Bilgi","Uygun koltuk tespit edildi!")
-            self.progressBar.setValue(100)
-            self.timer.stop()
+            if "Engelli" in controlMessage:
+                log += "Uygun koltuk bulunamadı!"
+            elif controlMessage.startswith("Kontrol"):
+                log += "Kontrol işlemi durduruldu."
+            else:
+                log += controlMessage
+                self.progressBar.setRange(0, 100)
+                self.progressBar.setValue(100)
+                self.timer.stop()
+                QMessageBox.information(self,"Bilgi","Uygun koltuk tespit edildi!")
 
-        self.logPlainTextEdit.appendPlainText(message)
+        self.logPlainTextEdit.appendPlainText(log)
 
     def onControlFinished(self):
         print("Kontrol süreci başarıyla tamamlandı.")
@@ -108,19 +116,17 @@ class Controller(QThread):
         self.date = travelDate
         self.time = travelTime
         self.controlTime = controlTime
-        self.stopped = False
 
     def run(self):
         try:
             service = Service(self.dependencies["driver_path"])
             options = webdriver.ChromeOptions()
-            options.add_argument("--headless")
             driver = webdriver.Chrome(service=service, options=options)
 
             driver.get(self.dependencies["tcdd_link"])
-            time.sleep(3)
+            time.sleep(5)
 
-            wait = WebDriverWait(driver, 10)
+            wait = WebDriverWait(driver, 15)
             
             # departure
             departure = wait.until(EC.presence_of_element_located((By.ID, self.dependencies["departure_element_id"])))
