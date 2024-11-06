@@ -317,7 +317,7 @@
       <rect>
        <x>395</x>
        <y>20</y>
-       <width>41</width>
+       <width>50</width>
        <height>201</height>
       </rect>
      </property>
@@ -332,15 +332,18 @@
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background-color: transparent; /* Arka planı şeffaf yapar */
-    border: none; /* Butonun kenarlığını kaldırır */
-    qproperty-iconSize: 24px 24px; /* İkon boyutunu ayarlar */
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+QPushButton:hover {
+    background-color: #74a1d4;
 }
 
 QPushButton:pressed {
-    background-color: rgba(0, 0, 0, 0.1); /* Tıklanınca hafif bir koyuluk efekti verir */
-}
-</string>
+    background-color: #c3c3c3;
+}</string>
         </property>
         <property name="text">
          <string/>
@@ -364,15 +367,18 @@ QPushButton:pressed {
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background-color: transparent; /* Arka planı şeffaf yapar */
-    border: none; /* Butonun kenarlığını kaldırır */
-    qproperty-iconSize: 24px 24px; /* İkon boyutunu ayarlar */
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+QPushButton:hover {
+    background-color: #74a1d4;
 }
 
 QPushButton:pressed {
-    background-color: rgba(0, 0, 0, 0.1); /* Tıklanınca hafif bir koyuluk efekti verir */
-}
-</string>
+    background-color: #c3c3c3;
+}</string>
         </property>
         <property name="text">
          <string/>
@@ -396,15 +402,18 @@ QPushButton:pressed {
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background-color: transparent; /* Arka planı şeffaf yapar */
-    border: none; /* Butonun kenarlığını kaldırır */
-    qproperty-iconSize: 24px 24px; /* İkon boyutunu ayarlar */
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+QPushButton:hover {
+    background-color: #74a1d4;
 }
 
 QPushButton:pressed {
-    background-color: rgba(0, 0, 0, 0.1); /* Tıklanınca hafif bir koyuluk efekti verir */
-}
-</string>
+    background-color: #c3c3c3;
+}</string>
         </property>
         <property name="text">
          <string/>
@@ -425,15 +434,18 @@ QPushButton:pressed {
        <widget class="QPushButton" name="clearPlainTextEdit">
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background-color: transparent; /* Arka planı şeffaf yapar */
-    border: none; /* Butonun kenarlığını kaldırır */
-    qproperty-iconSize: 24px 24px; /* İkon boyutunu ayarlar */
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+QPushButton:hover {
+    background-color: #74a1d4;
 }
 
 QPushButton:pressed {
-    background-color: rgba(0, 0, 0, 0.1); /* Tıklanınca hafif bir koyuluk efekti verir */
-}
-</string>
+    background-color: #c3c3c3;
+}</string>
         </property>
         <property name="text">
          <string/>
