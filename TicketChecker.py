@@ -53,7 +53,10 @@ class TicketChecker(QMainWindow):
         now = now.strftime("%H:%M:%S")
 
         if "Engelli" in controlMessage:
-            message = f"Kontrol zamanı : {now}, Uygun koltuk bulunamadı!"
+            if controlMessage.startswith("Hata"):
+                message = f"Kontrol zamanı : {now}, {controlMessage}"
+            else:
+                message = f"Kontrol zamanı : {now}, Uygun koltuk bulunamadı!"
         else:
             message = f"Kontrol zamanı : {now}, {controlMessage}"
             QMessageBox.information(self,"Bilgi","Uygun koltuk tespit edildi!")
