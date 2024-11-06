@@ -27,6 +27,10 @@ class TicketChecker(QMainWindow):
         self.addChromeDriverButton.clicked.connect(self.addChromeDriver)
         self.startControlButton.clicked.connect(self.startControl)
         self.clearPlainTextEdit.clicked.connect(self.clear)
+        self.stopControlButton.clicked.connect(self.stop)
+
+    def stop(self):
+        pass
 
     def clear(self):
         self.logPlainTextEdit.clear()
@@ -104,6 +108,7 @@ class Controller(QThread):
         self.date = travelDate
         self.time = travelTime
         self.controlTime = controlTime
+        self.stopped = False
 
     def run(self):
         try:
