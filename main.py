@@ -66,7 +66,7 @@ class TicketChecker(QMainWindow):
                 self.startControl()
             else:
                 log += controlMessage
-                self.logPlainTextEdit.appendPlaintext(f"{log}")
+                self.logPlainTextEdit.appendPlainText(f"{log}")
                 self.logPlainTextEdit.appendPlainText("Çok fazla deneme oldu, program sonlandırılıyor.")
                 self.stop()
         else:
