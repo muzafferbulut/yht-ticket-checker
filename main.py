@@ -23,6 +23,9 @@ class TicketChecker(QMainWindow):
         self.clearPlainTextEdit.clicked.connect(self.clear)
         self.stopControlButton.clicked.connect(self.stop)
 
+        self.retryCount = 0
+        self.maxRetries = 3
+
     def stop(self):
         self.progressBar.setRange(0, 100)
         self.progressBar.setValue(0)
@@ -51,20 +54,21 @@ class TicketChecker(QMainWindow):
         self.worker.start()
 
     def checkControl(self, controlMessage):
-        retryCount = 0
         now = datetime.now()
         self.now = now.strftime("%H:%M:%S")
         log = f"Kontrol zamanı : {self.now}, "
 
         if controlMessage.startswith("Hata") or controlMessage.startswith("Kontrol"):
             log += controlMessage
-            self.logPlainTextEdit.appendPlainText("Kontrol işlemi tekrar başlatılıyor.")
-            retryCount +=1
-            if retryCount<4:
+            self.retryCount += 1
+            if self.retryCount <= self.maxRetries:
+                self.logPlainTextEdit.appendPlainText(f"{log}\nKontrol işlemi tekrar başlatılıyor. {self.retryCount}/{self.maxRetries}")
                 self.startControl()
             else:
-                self.logPlainTextEdit.appendPlainText("Çok fazla deneme oldu. Sonsuz döngüye girmemesi için program sonlandırılıyor.")
-                self.stop()                
+                log += controlMessage
+                self.logPlainTextEdit.appendPlaintext(f"{log}")
+                self.logPlainTextEdit.appendPlainText("Çok fazla deneme oldu, program sonlandırılıyor.")
+                self.stop()
         else:
             if "Engelli" in controlMessage or "(0 )" in controlMessage:
                 log += "Uygun koltuk bulunamadı!"
@@ -75,9 +79,9 @@ class TicketChecker(QMainWindow):
                 self.progressBar.setRange(0, 100)
                 self.progressBar.setValue(100)
                 self.timer.stop()
-                QMessageBox.information(self,"Bilgi","Uygun koltuk tespit edildi!")
-
-        self.logPlainTextEdit.appendPlainText(log)
+                QMessageBox.information(self, "Bilgi", "Uygun koltuk tespit edildi!")
+            self.retryCount = 0
+            self.logPlainTextEdit.appendPlainText(log)
 
     def onControlFinished(self):
         print("Kontrol süreci başarıyla tamamlandı.")
