@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
-from PyQt5.QtCore import QDateTime, QTimer
+from PyQt5.QtCore import QDateTime, QTimer, QTime
 from datetime import datetime
 from PyQt5.uic import loadUi
 from Controller import Controller
@@ -96,7 +96,9 @@ class TicketChecker(QMainWindow):
         self.startControlButton.setEnabled(True)
 
     def setDate2departureStationDateEdit(self):
-        self.departureStationDateTimeEdit.setDateTime(QDateTime.currentDateTime())
+        current_datetime = QDateTime.currentDateTime()
+        current_datetime.setTime(QTime(18, 25))
+        self.departureStationDateTimeEdit.setDateTime(current_datetime)
 
     def changeDriverPath(self, driver_path):
         self.dependencies["driver_path"] = driver_path
