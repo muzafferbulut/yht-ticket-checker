@@ -51,14 +51,22 @@ class TicketChecker(QMainWindow):
         self.worker.start()
 
     def checkControl(self, controlMessage):
+        retryCount = 0
         now = datetime.now()
         self.now = now.strftime("%H:%M:%S")
         log = f"Kontrol zamanı : {self.now}, "
 
         if controlMessage.startswith("Hata") or controlMessage.startswith("Kontrol"):
             log += controlMessage
+            self.logPlainTextEdit.appendPlainText("Kontrol işlemi tekrar başlatılıyor.")
+            retryCount +=1
+            if retryCount<4:
+                self.startControl()
+            else:
+                self.logPlainTextEdit.appendPlainText("Çok fazla deneme oldu. Sonsuz döngüye girmemesi için program sonlandırılıyor.")
+                self.stop()                
         else:
-            if "Engelli" in controlMessage:
+            if "Engelli" in controlMessage or "(0 )" in controlMessage:
                 log += "Uygun koltuk bulunamadı!"
             elif controlMessage.startswith("Kontrol"):
                 log += "Kontrol işlemi durduruldu."
